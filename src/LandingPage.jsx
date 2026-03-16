@@ -375,7 +375,7 @@ export default function LandingPage() {
   ];
 
   const clients = [
-    "Ecommerce brands doing $500k–$20M in annual revenue",
+    "Ecommerce brands doing $250k+ in annual revenue",
     "Founders actively running paid ads on Meta, Google, or TikTok",
     "Brands that want data-driven decisions — not gut-feel growth",
     "Operators focused on profitable scaling, not vanity metrics",
@@ -610,10 +610,10 @@ export default function LandingPage() {
 
               <Reveal delay={140}>
                 <p className="text-[17px] text-gray-500 leading-[1.7] mb-3 max-w-[420px]">
-                  LeverAI Ventures helps ecommerce brands scale profitably by combining AI-driven growth systems with fractional CFO expertise.
+                  We help ecommerce brands scale profitably by combining AI-driven growth systems with focus on right metrics that drive profitability.
                 </p>
                 <p className="text-sm text-gray-400 leading-relaxed mb-9 max-w-[400px]">
-                  Most agencies optimize ad spend. We optimize profit, conversion, and customer lifetime value.
+                  Most agencies simply increase your ad spend to drive revenue growth with little focus on profitability. We perform end-to-end optimization to drive growth with profitability.
                 </p>
               </Reveal>
 
@@ -676,8 +676,9 @@ export default function LandingPage() {
               { name: "Shopify",    icon: "S" },
               { name: "Meta Ads",   icon: "M" },
               { name: "Google Ads", icon: "G" },
-              { name: "TikTok Ads", icon: "T" },
+              { name: "MailChimp", icon: "M" },
               { name: "Klaviyo",    icon: "K" },
+              { name: "Other systems",    icon: "O" },
             ].map(({ name, icon }) => (
               <div key={name} className="flex items-center gap-2 trust-logo group cursor-default">
                 <span className="w-5 h-5 rounded-md bg-gray-100 group-hover:bg-gray-200 flex items-center justify-center text-[10px] font-black text-gray-400 transition-colors">
@@ -834,7 +835,7 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-2 gap-6 max-w-3xl">
             <PricingCard
               plan="Standard Retainer"
-              price="$4k–$8k"
+              price="Fixed  $"
               period="per month"
               description="Full-stack deployment of the LeverAI system with ongoing optimization, weekly reporting, and fractional CFO guidance for your brand."
               delay={0}
@@ -868,7 +869,7 @@ export default function LandingPage() {
               {/* Mini stat grid */}
               <div className="grid grid-cols-2 gap-3 mt-10">
                 {[
-                  { v: "$500k+",  l: "Min. Annual Revenue",  c: C.orange  },
+                  { v: "$250k+",  l: "Min. Annual Revenue",  c: C.orange  },
                   { v: "8–10",    l: "Active Clients Max",   c: C.purple  },
                   { v: "45 min",  l: "Audit Session",        c: C.blue    },
                   { v: "3–6mo",   l: "Avg. ROI Horizon",     c: C.green   },
