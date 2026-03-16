@@ -35,4 +35,3 @@ lerna-debug.log*
 
 # TypeScript
 *.tsbuildinfo
-package-lock.json
