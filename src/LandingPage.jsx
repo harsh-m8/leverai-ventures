@@ -143,7 +143,7 @@ function CTABtn({ size = "md", variant = "primary", className = "" }) {
   };
   return (
     <a href="#audit" className={`${base} ${sizes[size]} ${variants[variant]} ${className}`}>
-      Book Your AI Profit Audit
+      Book Your Free Assessment
       <HeroIcon paths={ICONS.arrowRight} className="w-4 h-4" />
     </a>
   );
@@ -367,11 +367,15 @@ export default function LandingPage() {
   ];
 
   const auditDeliverables = [
-    "Profit & margin analysis across all channels and SKUs",
-    "CAC / LTV breakdown by acquisition source",
-    "Marketing ROI and blended ROAS audit",
-    "Conversion rate analysis and opportunity map",
-    "Retention gap analysis and lifecycle scoring",
+    "Profit & margin analysis",
+    "Initial list of opportunities",
+    "Retention gap analysis",
+    
+    // "Profit & margin analysis across all channels and SKUs",
+    // "CAC / LTV breakdown by acquisition source",
+    // "Marketing ROI and blended ROAS audit",
+    // "Conversion rate analysis and opportunity map",
+    // "Retention gap analysis and lifecycle scoring",
   ];
 
   const clients = [
@@ -620,12 +624,11 @@ export default function LandingPage() {
               <Reveal delay={200}>
                 <div className="flex flex-wrap items-center gap-3 mb-5">
                   <CTABtn size="lg" />
-                  <CTABtn size="lg" variant="ghost" />
                 </div>
-                <p className="text-xs text-gray-400">For brands doing $500k–$20M annually · No commitment required</p>
+                <p className="text-xs text-gray-400">For brands doing $250k+ in annual revenue · No commitment required</p>
               </Reveal>
 
-              {/* Stat strip */}
+              {/* Stat strip 
               <Reveal delay={270}>
                 <div className="mt-10 pt-9 border-t border-gray-200/70">
                   <div className="grid grid-cols-3 gap-4">
@@ -642,7 +645,7 @@ export default function LandingPage() {
                     ))}
                   </div>
                 </div>
-              </Reveal>
+              </Reveal>*/}
             </div>
 
             {/* RIGHT ─────────────────────────────── */}
@@ -827,7 +830,7 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-5">
           <Reveal className="mb-14">
             <EyeBrow>Engagement Models</EyeBrow>
-            <SectionHeading sub="Two models — both structured so our incentives stay tightly aligned with your growth and profitability.">
+            <SectionHeading sub="Two models to offer you flexibility.">
               Aligned With Founder Success
             </SectionHeading>
           </Reveal>
@@ -871,8 +874,8 @@ export default function LandingPage() {
                 {[
                   { v: "$250k+",  l: "Min. Annual Revenue",  c: C.orange  },
                   { v: "8–10",    l: "Active Clients Max",   c: C.purple  },
-                  { v: "45 min",  l: "Audit Session",        c: C.blue    },
-                  { v: "3–6mo",   l: "Avg. ROI Horizon",     c: C.green   },
+                  { v: "45 min",  l: "Assessment Session",        c: C.blue    },
+                  { v: "4–12mo",   l: "Avg. ROI Horizon",     c: C.green   },
                 ].map(({ v, l, c }) => (
                   <div key={l}
                     className="rounded-xl border border-gray-100 bg-[#FAFAF8] px-4 py-4 hover:border-gray-200 hover:bg-white transition-all duration-150">
@@ -931,7 +934,7 @@ export default function LandingPage() {
                     Start With an<br />AI Profit Audit
                   </h2>
                   <p className="text-[16px] text-gray-500 leading-relaxed mb-8 max-w-md">
-                    A comprehensive diagnostic of your ecommerce growth system — not a sales pitch. You'll leave with clear, actionable insight into exactly where profit is leaking and how to fix it.
+                    A diagnostic of your ecommerce growth system — not a sales pitch. You'll leave with clear, actionable insight into exactly where profit is leaking and how to fix it.
                   </p>
                   <CTABtn size="xl" />
                   <p className="mt-3.5 text-xs text-gray-400 flex items-center gap-2">
