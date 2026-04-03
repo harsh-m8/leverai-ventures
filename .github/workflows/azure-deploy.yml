@@ -31,7 +31,7 @@ jobs:
         run: npm run build
         env:
           # NEXT_PUBLIC_* vars are baked into client bundles at build time
-          NEXT_PUBLIC_APP_URL: https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net
+          NEXT_PUBLIC_APP_URL: https://leveraiventures.com
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
 
