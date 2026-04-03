@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect, useRef } from "react";
 
 // ─────────────────────────────────────────────────────────────────
@@ -540,6 +541,13 @@ export default function LandingPage() {
               </a>
             ))}
             <div className="w-px h-5 bg-gray-200 mx-3" />
+            <a href="/dashboard"
+              className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-gray-500
+                px-3.5 py-2 rounded-xl border border-gray-200 hover:border-gray-300 hover:bg-gray-50
+                transition-all duration-150 mr-2">
+              <HeroIcon paths={ICONS.chartBar} className="w-3.5 h-3.5" strokeWidth={2} />
+              Dashboard
+            </a>
             <CTABtn size="md" />
           </div>
 

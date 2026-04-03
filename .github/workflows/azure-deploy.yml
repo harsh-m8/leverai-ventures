@@ -1,0 +1,50 @@
+name: Deploy to Azure App Service
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '20.x'
+  # Set this to your Azure Web App name
+  AZURE_WEBAPP_NAME: leverai-ventures
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js app (standalone)
+        run: npm run build
+        env:
+          # NEXT_PUBLIC_* vars are baked into client bundles at build time
+          NEXT_PUBLIC_APP_URL: https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+
+      # Package the standalone output + static assets
+      - name: Prepare deployment package
+        run: |
+          cp -r .next/static .next/standalone/.next/static
+          cp -r public         .next/standalone/public
+          cp web.config        .next/standalone/web.config
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: .next/standalone
