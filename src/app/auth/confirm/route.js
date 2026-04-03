@@ -7,15 +7,24 @@ import { NextResponse } from 'next/server';
  *   - Email confirmation after signup (type=email)
  *   - Password reset (type=recovery)
  *   - Magic link login (type=magiclink)
+ *
+ * Uses NEXT_PUBLIC_APP_URL for redirects rather than request.url origin,
+ * because Azure App Service sits behind a reverse proxy and request.url
+ * contains an internal hostname, not the public-facing domain.
  */
 export async function GET(request) {
-  const { searchParams, origin } = new URL(request.url);
+  const { searchParams } = new URL(request.url);
   const tokenHash = searchParams.get('token_hash');
   const type      = searchParams.get('type');
   const next      = searchParams.get('next') ?? '/dashboard';
 
+  // Use the configured public URL, falling back to the request origin only
+  // for local development where NEXT_PUBLIC_APP_URL may not be set.
+  const { origin } = new URL(request.url);
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? origin;
+
   if (!tokenHash || !type) {
-    return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent('Invalid confirmation link')}`);
+    return NextResponse.redirect(`${appUrl}/login?error=${encodeURIComponent('Invalid confirmation link')}`);
   }
 
   const cookieStore = await cookies();
@@ -38,15 +47,13 @@ export async function GET(request) {
 
   if (error) {
     return NextResponse.redirect(
-      `${origin}/login?error=${encodeURIComponent(error.message)}`
+      `${appUrl}/login?error=${encodeURIComponent(error.message)}`
     );
   }
 
-  // For password recovery, send the user to a page where they can set a new password.
-  // For email confirmation / magic link, send to the dashboard (or the 'next' param).
   if (type === 'recovery') {
-    return NextResponse.redirect(`${origin}/auth/reset-password`);
+    return NextResponse.redirect(`${appUrl}/auth/reset-password`);
   }
 
-  return NextResponse.redirect(`${origin}${next}`);
+  return NextResponse.redirect(`${appUrl}${next}`);
 }
